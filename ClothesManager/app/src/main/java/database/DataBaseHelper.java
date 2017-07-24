@@ -4,58 +4,38 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 
+import utils.StringValues;
+
 /**
  * Created by Cesar on 7/20/2017.
  */
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-
     // Database Version
     private static final int DATABASE_VERSION = 1;
-    // Database Name
-    private static final String DATABASE_NAME = "clothesManager";
+
     // singleton instance
     private static DataBaseHelper dbHelperInstance;
 
-    // table names
-    private static final String TABLE_BASKET = "basket";
-    private static final String TABLE_GARMENT = "garment";
-
-    // column names for table basket
-    private static final String COLUMN_IDBASKET = "id_basket";
-    private static final String COLUMN_BASKETNAME = "basket_name";
-    private static final String COLUMN_BASKETDESCRIPTION = "basket_description";
-
-    // column names for table garment
-    private static final String COLUMN_IDGARMENT = "id_garment";
-    private static final String COLUMN_GARMENTNAME = "garment_name";
-    private static final String COLUMN_GARMENTTYPE = "garment_type";
-    private static final String COLUMN_USAGE = "usage_percentage";
-    private static final String COLUMN_LASTUSAGE = "last_usage";
-    private static final String COLUMN_GARMENTPCITURE = "garment_picture";
-    private static final String COLUMN_ISINBASKET = "is_in_basket";
-
     // create basket table statement
     private static final String CREATE_TABLE_BASKET = "CREATE TABLE "
-            + TABLE_BASKET + "(" + COLUMN_IDBASKET + " INTEGER PRIMARY KEY,"
-            + COLUMN_BASKETNAME + " TEXT,"
-            + COLUMN_BASKETDESCRIPTION + " TEXT"
+            + StringValues.TABLE_BASKET + "(" + StringValues.COLUMN_IDBASKET + " INTEGER PRIMARY KEY,"
+            + StringValues.COLUMN_BASKETNAME + " TEXT,"
+            + StringValues.COLUMN_BASKETDESCRIPTION + " TEXT"
             + ")";
     // create garment table statement
-    private static final String CREATE_TABLE_GARMENT = "CREATE TABLE " + TABLE_GARMENT
-            + "(" + COLUMN_IDGARMENT + " INTEGER PRIMARY KEY,"
-            + COLUMN_GARMENTNAME + " TEXT,"
-            + COLUMN_GARMENTTYPE + " TEXT,"
-            + COLUMN_USAGE + " INTEGER,"
-            + COLUMN_LASTUSAGE + " DATETIME,"
-            + COLUMN_GARMENTPCITURE + " BLOB,"
-            + COLUMN_ISINBASKET + " INTEGER," // booleans must be managed as integers 0 or 1
-            + COLUMN_IDBASKET + " INTEGER"
+    private static final String CREATE_TABLE_GARMENT = "CREATE TABLE " + StringValues.TABLE_GARMENT
+            + "(" + StringValues.COLUMN_IDGARMENT + " INTEGER PRIMARY KEY,"
+            + StringValues.COLUMN_GARMENTNAME + " TEXT,"
+            + StringValues.COLUMN_GARMENTTYPE + " TEXT,"
+            + StringValues.COLUMN_USAGE + " INTEGER,"
+            + StringValues.COLUMN_LASTUSAGE + " DATETIME,"
+            + StringValues.COLUMN_GARMENTPCITURE + " BLOB,"
+            + StringValues.COLUMN_ISINBASKET + " INTEGER," // booleans must be managed as integers 0 or 1
+            + StringValues.COLUMN_IDBASKET + " INTEGER"
             // foreign key may not be neccesary
             //+ "FOREIGN KEY(" + COLUMN_IDBASKET + ") REFERENCES " + TABLE_BASKET + "(" + COLUMN_IDBASKET + ")"
             + ")";
-
-
     /**
      * Method to return the unique instance of this DBHelper
      * @param context
@@ -69,7 +49,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public DataBaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, StringValues.DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -82,8 +62,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // drop existing tables
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_GARMENT);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BASKET);
+        db.execSQL("DROP TABLE IF EXISTS " + StringValues.TABLE_GARMENT);
+        db.execSQL("DROP TABLE IF EXISTS " + StringValues.TABLE_BASKET);
 
         // create tables once again
         onCreate(db);

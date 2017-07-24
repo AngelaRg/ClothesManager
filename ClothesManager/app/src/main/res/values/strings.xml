@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">ClothesManager</string>
+
+    <!-- Database attributes  -->
+    <string name="DATABASE_NAME">clothesManager</string>
+    <string name="TABLE_BASKET">basket</string>
+    <string name="TABLE_GARMENT">garment</string>
+
+    <!-- Basket attributes  -->
+    <string name="COLUMN_IDBASKET">id_basket</string>
+    <string name="COLUMN_BASKETNAME">basket_name</string>
+    <string name="COLUMN_BASKETDESCRIPTION">basket_description</string>
+
+    <!-- Garment attributes  -->
+    <string name="COLUMN_IDGARMENT">id_garment</string>
+    <string name="COLUMN_GARMENTNAME">garment_name</string>
+    <string name="COLUMN_GARMENTTYPE">garment_type</string>
+    <string name="COLUMN_USAGE">usage_percentage</string>
+    <string name="COLUMN_LASTUSAGE">last_usage</string>
+    <string name="COLUMN_GARMENTPCITURE">garment_picture</string>
+    <string name="COLUMN_ISINBASKET">is_in_basket</string>
+
 </resources>
